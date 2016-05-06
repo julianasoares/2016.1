@@ -5,6 +5,7 @@ class Questao(models.Model):
     data_publicacao=models.DateTimeField("Data da Publicação")
     def __str__(self):
         return self.texto_questao
+        
 class Opcao(models.Model):
     questao=models.ForeignKey(Questao,verbose_name="Questão")
     texto_opcao=models.CharField("Texto",max_length=120)
