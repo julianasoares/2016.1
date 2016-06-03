@@ -22,7 +22,7 @@ class Cliente(Pessoa):
 
 
 class Funcionario(Pessoa):
-    matricula=models.CharField("Matrícula",max_length=10)
+    matricula=models.CharField("Matrícula",max_length=10,unique=True)
     cargo=models.ForeignKey(Cargo,on_delete=models.PROTECT,verbose_name="Cargo")
 
 class Produto(models.Model):
