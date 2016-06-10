@@ -1,4 +1,4 @@
-from django.db import transaction,IntegrityError
+
 from appvendas.models import *
 
 # Criando Unidades de Medidas
@@ -51,15 +51,3 @@ item02.save()
 
 print(venda.calculaValorTotal())
 
-
-
-
-class Person(models.Model):
-    SHIRT_SIZES = (
-        ('S', 'Small'),
-        ('M', 'Medium'),
-        ('L', 'Large'),
-    )
-    name = models.CharField(max_length=60)
-    shirt_size = models.CharField(max_length=1,
-    	choices=SHIRT_SIZES)
