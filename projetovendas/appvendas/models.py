@@ -6,7 +6,7 @@ class Unidade(models.Model):
     descricao=models.CharField("Descrição",max_length=100)
     sigla=models.CharField("Sigla",max_length=5)
     def __str__(self):
-        return self.descricao
+        return "{0:s}-{1:s}".format(self.descricao,self.sigla)
 
 class Cargo(models.Model):
     descricao=models.CharField("Descrição",max_length=150)
@@ -57,6 +57,6 @@ class Venda(models.Model):
         return resultado['total']
 
 class VendaProduto(models.Model):
-    venda=models.ForeignKey(Venda,on_delete=models.CASCADE)
-    produto=models.ForeignKey(Produto,on_delete=models.PROTECT)
+    venda=models.ForeignKey(Venda,on_delete=models.CASCADE,primary_key=True)
+    produto=models.ForeignKey(Produto,on_delete=models.PROTECT,primary_key=True)
     quantidade=models.IntegerField("Quantidade")
