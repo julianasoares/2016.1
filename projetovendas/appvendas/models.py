@@ -57,6 +57,10 @@ class Venda(models.Model):
         return resultado['total']
 
 class VendaProduto(models.Model):
-    venda=models.ForeignKey(Venda,on_delete=models.CASCADE,primary_key=True)
-    produto=models.ForeignKey(Produto,on_delete=models.PROTECT,primary_key=True)
+    venda=models.ForeignKey(Venda,on_delete=models.CASCADE)
+    produto=models.ForeignKey(Produto,on_delete=models.PROTECT)
     quantidade=models.IntegerField("Quantidade")
+    @property
+    def subtotal(self):
+        return self.produto.valorUnitario*self.quantidade
+
