@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Vendas</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>Sistema de Vendas</h2>
+    <nav>
+        <a href="{% url 'unidades' %}"> Unidades </a>
+        <a href="#"> Cargos</a>
+        <a href="{% url 'produtos' %}"> Produtos</a>
+        <a href="#"> Clientes</a>
+        <a href="#"> Funcionários</a>
+        <a href="{% url 'vendas' %}"> Vendas</a>
+        <a href="#"> Cadastros</a>
+    </nav>
+    {% block conteudo %}
+        <h3>Bem vindo ao sistema de controle de vendas</h3>
+    {% endblock %}
+</body>
+</html>

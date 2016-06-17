@@ -1,4 +1,4 @@
-from django.db import transaction,IntegrityError
+
 from appvendas.models import *
 
 # Criando Unidades de Medidas

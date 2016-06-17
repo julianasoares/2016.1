@@ -6,7 +6,7 @@ class Unidade(models.Model):
     descricao=models.CharField("Descrição",max_length=100)
     sigla=models.CharField("Sigla",max_length=5)
     def __str__(self):
-        return self.descricao
+        return "{0:s}-{1:s}".format(self.descricao,self.sigla)
 
 class Cargo(models.Model):
     descricao=models.CharField("Descrição",max_length=150)
@@ -26,7 +26,7 @@ class Cliente(Pessoa):
 
 
 class Funcionario(Pessoa):
-    matricula=models.CharField("Matrícula",max_length=10)
+    matricula=models.CharField("Matrícula",max_length=10,unique=True)
     cargo=models.ForeignKey(Cargo,on_delete=models.PROTECT,verbose_name="Cargo")
 
 class Produto(models.Model):
@@ -60,3 +60,7 @@ class VendaProduto(models.Model):
     venda=models.ForeignKey(Venda,on_delete=models.CASCADE)
     produto=models.ForeignKey(Produto,on_delete=models.PROTECT)
     quantidade=models.IntegerField("Quantidade")
+    @property
+    def subtotal(self):
+        return self.produto.valorUnitario*self.quantidade
+
